@@ -46,7 +46,7 @@ function handleText(userText) {
     looksLikeSchedule(userText)
   ) {
     const scheduleText = cleanScheduleText(userText);
-    const result = parseSchedule(scheduleText);
+const result = parseSchedule(scheduleText);
 
 await saveSchedule(result);
 
