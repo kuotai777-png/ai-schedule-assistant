@@ -1,6 +1,6 @@
 import { messagingApi } from "@line/bot-sdk";
 import { parseSchedule } from "../utils/parser.js";
-
+import { saveSchedule } from "../utils/googleSheet.js";
 const lineClient = new messagingApi.MessagingApiClient({
   channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN
 });
@@ -48,12 +48,14 @@ function handleText(userText) {
     const scheduleText = cleanScheduleText(userText);
     const result = parseSchedule(scheduleText);
 
-    return (
-      `新增成功 📅\n\n` +
-      `日期：${result.date}\n` +
-      `時間：${result.time}\n` +
-      `事件：${result.title}`
-    );
+await saveSchedule(result);
+
+return (
+  `新增成功 📅\n\n` +
+  `日期：${result.date}\n` +
+  `時間：${result.time}\n` +
+  `事件：${result.title}`
+);
   }
 
   return (
