@@ -2,5 +2,7 @@
   "name": "ai-schedule-assistant",
   "version": "1.0.0",
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "@line/bot-sdk": "^9.8.0"
+  }
 }
